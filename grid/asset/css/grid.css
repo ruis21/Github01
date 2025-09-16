@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.item {
+    border: 1px solid black;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.item1,
+.item6 {
+    background-color: darksalmon;
+}
+
+.item2,
+.item7 {
+    background-color: lightskyblue;
+}
+
+.item3,
+.item8 {
+    background-color: olivedrab;
+}
+
+.item4,
+.item9 {
+    background-color: goldenrod;
+}
+
+.item5,
+.item10 {
+    background-color: dodgerblue;
+}
+
+.container {
+    display: grid;
+    /* grid-template-columns: 300px 300px 300px 300px; */
+    /* grid-template-columns: repeat(4, 300px); */
+
+    grid-template-columns: 150px repeat(2, 300px) 200px;
+
+    /* grid-template-rows: 100px 200px 150px; */
+    grid-template-rows: repeat(3, 150px);
+
+    /* grid-template-columns: 20% 30% 40%; */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: 1fr 2fr 1fr 2fr; */
+
+    /* 행이 몇개 만들어질지 모르지만 전체적으로 자동으로 행 높이를 지정해주고 싶은 경우 사용 grid-auto-rows 사용 */
+    grid-auto-rows: 100px;
+
+    /* column-gap: 20px; */
+    /* row-gap: 30px; */
+    /* row-gap 이 먼저 column-gap이 나중 */
+    grid-gap: 30px 20px;
+}
+
+.item1 {
+    /* grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3; */
+
+    /* grid-column: 1 / 3;
+    grid-row: 1 / 3; */
+
+    /* 몇번째 라인부터 몇칸을 사용 */
+    /* grid-column: 2 / span 2; */
+    /* grid-row: 1 /span 3; */
+
+    /* 마지막 컬럼까지 지정 시 -1 */
+    /* grid-column: 2 / -1; */
+
+    /* column과 row를 동시에 사용가능 */
+    /* row-start / column-start / row-end / column-end 순서로 지정  */
+
+    grid-area: 1/1/3/3;
+
+
+}
+
+/* .item2 {
+    grid-area: 1/3/2/5;
+}
+
+.item6 {
+    grid-area: 3/1/4/3;
+}
+
+.item4 {
+    grid-area: 2/3/4/5;
+}
+
+.item5 {
+    grid-area: 4/1/6/5;
+}
+
+.item3 {
+    grid-column: 3/5;
+    grid-row: 6/8;
+}
+
+.item7 {
+    grid-area: 6/1/8/3;
+}
+
+.item8 {
+    grid-column: 1/3;
+}
+
+.item9 {
+    grid-column: -1 / -3;
+}
+
+.item10 {
+    grid-column: 1/5;
+} */
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img-container {
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-auto-rows: 250px;
+    grid-gap: 10px;
+
+    /* grid-template-areas를 지정해준경우 grid-template-column을 지정해주지 않아도됨 */
+    grid-template-areas:
+        "image1 image1 image1"
+        "image2 image3 image3"
+        "image2 image4 image7"
+        "image5 image6 image7"
+        "image8 image9 image9";
+}
+
+.image1 {
+    grid-area: image1;
+}
+
+.image2 {
+    grid-area: image2;
+}
+
+.image3 {
+    grid-area: image3;
+}
+
+.image4 {
+    grid-area: image4;
+}
+
+.image5 {
+    grid-area: image5;
+}
+
+.image6 {
+    grid-area: image6;
+}
+
+.image7 {
+    grid-area: image7;
+}
+
+.image8 {
+    grid-area: image8;
+}
+
+.image9 {
+    grid-area: image9;
+}
+
+@media (max-width:1024px) {
+    .img-container {
+        grid-template-areas:
+            "image1 image2"
+            "image1 image3"
+            "image4 image3"
+            "image4 image5"
+            "image6 image6"
+            "image7 image8"
+            "image9 image9";
+    }
+}
+
+@media (max-width:768px) {
+    .img-container {
+        grid-template-areas:
+            "image1"
+            "image2"
+            "image3"
+            "image4"
+            "image5"
+            "image6"
+            "image7"
+            "image8"
+            "image9";
+        grid-auto-rows: auto;
+    }
+
+}

@@ -1,0 +1,16 @@
+:root {
+    font-size: 40px;
+    width: 500px;
+}
+.p-wrap {
+    font-size: 20px;
+    width: 400px;
+}
+.p1 {
+    font-size: 0.5rem;
+    width: 20em;
+}
+.p2 {
+    width: 2rem;
+    font-size: 5rem;
+}

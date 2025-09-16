@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript dataset</title>
+
+    <style>
+        .season-img {
+            width: 350px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 data-test="속성으로 변경한 문구" class="title">data 속성을 알아봅시다</h2>
+
+    <hr>
+
+    <h2>사계절</h2>
+    <ul>
+        <li class="season" data-img="./asset/image/spring.jpg">봄</li>
+        <li class="season" data-img="./asset/image/summer.jpg">여름</li>
+        <li class="season" data-img="/asset/image/autumn.jpg">가을</li>
+        <li class="season" data-img="/asset/image/winter.jpg">겨울</li>
+    </ul>
+
+    <div>
+        <h3>선택된 계절</h3>
+
+        <img class="season-img" src="" alt="계절 이미지">
+
+    </div>
+
+
+    <script src="./asset/script03.js"></script>
+</body>
+
+</html>

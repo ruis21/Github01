@@ -1,0 +1,590 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif;
+}
+.container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* kv 영역 */
+.kv-sec {
+    background-image: url("./image/slide01.jpg");
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: cover;
+    /* height: 760px; */
+    padding-top: 760px;
+    /* padding: 0 240px 0; */
+    position: relative;
+    width: 100%;
+}
+.kv-text {
+    max-width: 1440px;
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.kv-subtitle {
+    font-size: 22px;
+    font-weight: 800;
+}
+.kv-title {
+    font-size: 65px;
+    font-weight: 600;
+    margin-top: 0 15px 0 0;
+}
+.kv-desc {
+    margin-top: 50px;
+    font-size: 22px;
+}
+
+/* info 영역 */
+.info-sec {
+    padding: 110px 0;
+}
+.info-wrap {
+    width: 100%; 
+}
+.info-title {
+    font-size: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.info-subtitle {
+    font-size: 18px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.info-row-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 80px;
+}
+.info-row-icon {
+    width: 90px;
+    height: 90px;
+}
+.info-row-text {
+    font-size: 19px;
+}
+
+/* merit 영역 */
+.merit-sec {
+    width: 100%;
+    height: 789px;
+    background-color: #f9f9f9;
+    padding: 110px 0;
+}
+.merit-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+.merit-image-wrap {
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+.merit-text-wrap {
+    padding-left: 9%;
+    max-width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+.merit-text-title {
+    font-size: 40px;
+}
+.merit-text-desc {
+    margin-top: 40px;
+    font-size: 19px;
+    color: #555;
+}
+.merit-text-btn {
+    margin-top: 45px;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #0f3057;
+    color: white;
+    width: 150px;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+/* order 영역 */
+.order-sec {
+    width: 100%;
+    padding: 110px;
+}
+.order-wrap {
+    display: block;
+}
+.order-text-title {
+    font-size: 36px;
+}
+.order-text-desc {
+    padding: 10px 0 0;
+    font-size: 18px;
+}
+.order-row-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 90px;
+}
+.order-row-icon {
+    width: 90px;
+    height: 90px;
+    
+}
+.order-row img {
+    display: block;
+    margin: 0 auto;
+}
+.order-row-text {
+    padding-top: 8%;
+    text-align: center;
+}
+.order-row-text p {
+    margin-top: 15px;
+}
+.order-row-text strong {
+    width: 100px;
+    display: inline-block;
+    font-size: 19px;
+    line-height: 40px;
+    background:#ffa41b;
+    border-radius: 25px;
+    text-align: center;
+    color: white;
+}
+
+/* review 영역 */
+.review-sec {
+    width: 100%;
+    height: 802px;
+    padding: 110px;
+    background-color: #f9f9f9;
+}
+.review-title-wrap {
+    display: block;
+}
+.review-title {
+    font-size: 36px;
+}
+.review-subtitle {
+    padding: 10px 0 0;
+    font-size: 18px;
+}
+.review-wrap {
+    position: relative;
+}
+.review-btn-wrap {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.review-btn-wrap button {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+}
+.review-conts {
+    display: flex;
+    flex-direction: row;
+    margin-top: 90px;
+}
+.review-conts img {
+    width: 440px;
+    height: 352px;
+    margin: 0 20px;
+}
+
+/* suppport 영역 */
+.support-wrap {
+    padding-top: 110px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.support-discount-wrap {
+    background-color: #f2f2f2;
+    width: 620px;
+    height: 235px;
+    padding: 50px 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.support-discount-text h3 {
+    font-size: 30px;
+}
+.support-discount-text p {
+    font-size: 18px;
+    padding: 5px 0 0;
+}
+.support-discount-text span {
+    display: block;
+    margin: 35px 0 0;
+    padding: 0 0 5px;
+    text-decoration: underline;
+    color: #444444;
+    font-size: 16px;
+}
+.support-discount-icon img {
+    width: 100px;
+    height: 100px;
+}
+
+.support-contact-wrap {
+    background-color: #f2f2f2;
+    width: 620px;
+    height: 235px;
+    padding: 50px 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 0 0 40px;
+}
+.support-contact-text h3 {
+    font-size: 30px;
+}
+.support-contact-text p {
+    font-size: 18px;
+    padding: 5px 0 0;
+}
+.support-contact-text span {
+    display: block;
+    margin: 35px 0 0;
+    padding: 0 0 5px;
+    text-decoration: underline;
+    color: #444444;
+    font-size: 16px;
+}
+
+/* notice 영역 */
+.notice-sec {
+    width: 100%;
+}
+.notice-title-wrap {
+    display: block;
+}
+.notice-title {
+    font-size: 36px;
+    margin-top: 130px;
+}
+.notice-subtitle {
+    padding: 10px 0 0;
+    font-size: 18px;
+}
+.notice-card-wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+    margin-top: 90px;
+    margin-bottom: 110px;
+    
+}
+.notice-card {
+    width: 32%;
+}
+.notice-card-title {
+    font-size: 20px;
+}
+.notice-card img {
+    object-fit: cover;
+}
+.notice-card-desc {
+    font-size: 15px;
+    color: #999999;
+}
+.notice-wrap {
+    position: relative;
+}
+.notice-btn-wrap {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.notice-btn-wrap button {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+}
+
+
+/* store 영역 */
+.store-sec {
+    width: 100%;
+    height: 326px;
+    background: #0f3057 url("./image/store_bg.png") 50% 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.store-wrap {
+    display: block;
+    text-align: center;
+    padding: 70px;
+}
+.store-subtitle {
+    font-size: 25px;
+    color: white;
+}
+.store-title {
+    font-size: 32px;
+    color: white;
+}
+.store-btn {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px 0 0;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    width: 190px;
+    height: 65px;
+    background-color: #079B19;
+    border-radius: 50px;
+    font-weight: 500;
+    box-sizing: border-box;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+@media (max-width:1024px) {
+    
+    /* kv 영역 */
+    .kv-sec {
+    display: flex;
+    flex-direction: column;
+    height: 1474px;
+    background-image: url("./image/m_slide01.jpg");
+    }
+    .kv-text {
+    width: 100%;
+    top: 30%;
+    left: 50%; 
+    text-align: center;
+    }
+    .kv-title {
+        font-size: 60px;
+    }
+
+    /* info영역 */
+    .info-row-text {
+        margin-top: 50px;
+    }
+
+    /* merit 영역 */
+    .merit-sec {
+    height: 100%;
+    padding: 100px 20px 100px 20px;
+    display: block;
+    }
+    .merit-text-wrap {
+    padding: 0;
+    margin-top: 60px;
+    }
+    .merit-wrap {
+    display: block;
+    }
+    .merit-wrap > div {
+        max-width: 100%;
+    }
+    .merit-text-title {
+    font-size: 35px;
+    }
+    .merit-text-desc {
+        margin-top: 60px;
+        padding: 0;
+        font-size: 18px;
+        color: #555;
+    }
+    .merit-img-wrap img {
+        width: 100%;
+    }
+
+
+
+    /* order 영역 */
+    .order-row-wrap {
+    margin-top: 14%;
+    } 
+    .order-text-title {
+    font-size: 32px;
+    }
+    .order-sec {
+    padding: 100px 20px;
+    }
+    .order-row-text{
+        font-size: 17px;
+        margin-top: 14%;
+    }
+
+
+    /* review 영역 */
+    .review-sec {
+        padding: 100px 20px;
+    }
+    .review-title {
+        font-size: 32px;
+    }
+    .review-wrap {
+        margin-top: 70px;
+    }
+    .review-conts {
+        height: 183px;
+    }
+    .review-conts img {
+        max-height: 183px;
+    }
+
+    /* support 영역 */
+    .support-sec {
+        padding: 100px 20px;
+    }
+    .support-wrap {
+        /* height: auto; */
+        /* bottom: 0; */
+    }
+    .support-wrap h3 {
+        font-size: 24px;
+    }
+    .support-wrap p {
+        display:none;
+    }
+
+    /* notice 영역 */
+    .notice-sec {
+        padding: 0 0 20px 20px ;
+    }
+    .notice-title {
+        font-size: 32px;
+    }
+    .notice-card-wrap {
+        margin-top: 70px;
+    }
+}   
+
+@media (max-width:640px) {
+    /* kv 영역 */
+    .kv-text {
+        top: 25%;
+    }
+    .kv-title {
+        font-size: 26px;
+    }
+    .kv-subtitle {
+        font-size: 13px;
+    } 
+    .kv-sec {
+        height: 921px;
+    }
+    .kv-desc {
+        display: none;
+    }
+
+    /* info 영역 */
+    .info-sec {
+        padding: 80px 40px;
+    }
+    .info-row-wrap {
+        display: block;
+        margin-top: 40px;
+        font-size: 0;
+        text-align: center;
+    }
+    .info-row {
+        display: inline-block;
+        width: 32%;
+        padding-top: 17%;
+        font-size: 28px;
+    }
+    .info-ro-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    /* merit영역 */
+    .merit-sec {
+        padding: 110px 20px;
+    }
+    .merit-text-title {
+        font-size: 17.5px
+    }
+    .merit-text-desc {
+        font-size: 13px;
+        margin-top: 20px;
+    }
+    .merit-text-desc br{
+        display: none;
+    }
+    .merite-text-btn {
+        width: 3px;
+        height: 8px;
+        font-size: 3px;
+        margin-top: 22px;
+    }
+   
+    /* order 영역 */
+
+    .order-sec {
+        padding: 110px 20px;
+        position: relative;
+    }
+    .order-text-title {
+        font-size: 20px;
+    }
+    .order-text-desc {
+        display: none;
+    }
+    .order-row {
+        position: relative;
+        text-align: left;
+        margin-top: 10px;
+        padding: 0 0 0 35%;
+    }
+    .order-row-wrap {
+        display: block;
+        text-align: left;
+        width: cal(100%-75px);
+        margin-top: 75;
+        margin-left: 15px;
+    }
+    .order-row-wrap > div {
+        position: relative;
+    }
+    .order-row-icon:before {
+        left: 8%;
+        top: 50%;
+        transform: translateY(-50%);
+        background-size: 225px;
+    }
+    .order-row-text {
+        position: relative;
+        padding-left: 60px;
+    }
+}
