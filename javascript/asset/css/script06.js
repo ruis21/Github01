@@ -175,3 +175,4 @@ do {
 } while (number < 5);
 
 // do while 문은 조건이 거짓일 때도 한번 실행을 한다
+

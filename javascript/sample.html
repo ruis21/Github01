@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scroll Draw Path</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, Arial
+        }
+
+        header {
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            background: #f7f9f5
+        }
+
+        section {
+            min-height: 200vh;
+            position: relative;
+            background: #fff
+        }
+
+        /* SVG를 화면 고정해 “길”처럼 보이게 */
+        .route-wrap {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: grid;
+            place-items: center
+        }
+
+        svg {
+            width: min(900px, 90vw);
+            height: auto;
+            overflow: visible
+        }
+
+        .route {
+            fill: none;
+            stroke: #6cc24a;
+            /* 옐로우그린 톤 */
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .06));
+        }
+
+        /* 체크포인트 점 */
+        .dot {
+            fill: #111
+        }
+
+        .label {
+            font: 600 14px/1.2 system-ui, Arial;
+            fill: #333
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>스크롤하면 길이 그려져요 👇</h1>
+    </header>
+
+    <section id="track">
+        <div class="route-wrap">
+            <svg viewBox="0 0 1000 600" id="map">
+                <!-- “길” 경로 -->
+                <path id="route" class="route" d="M50,550 C200,500 250,350 340,380
+             S520,460 600,300
+             S760,140 950,100" />
+                <!-- 체크포인트 예시 -->
+                <circle class="dot" cx="50" cy="550" r="5" />
+                <text class="label" x="65" y="550">Start</text>
+                <circle class="dot" cx="600" cy="300" r="5" />
+                <text class="label" x="615" y="295">Shop</text>
+                <circle class="dot" cx="950" cy="100" r="5" />
+                <text class="label" x="965" y="100">Goal</text>
+            </svg>
+        </div>
+    </section>
+
+    <script>
+        (() => {
+            const section = document.getElementById('track');
+            const path = document.getElementById('route');
+
+            const length = path.getTotalLength();
+            path.style.strokeDasharray = length;
+            path.style.strokeDashoffset = length; // 처음엔 0% 그려진 상태
+
+            let ticking = false;
+
+            function update() {
+                // 섹션 내부 스크롤 진행률(0~1)
+                const rect = section.getBoundingClientRect();
+                const vh = window.innerHeight;
+                const total = rect.height - vh;         // sticky 영역에서 실제 스크롤 거리
+                const passed = Math.min(Math.max(-rect.top, 0), total);
+                const progress = total > 0 ? (passed / total) : 0;
+
+                // 길 그리기: 진행률만큼 dashoffset 감소
+                path.style.strokeDashoffset = length * (1 - progress);
+
+                ticking = false;
+            }
+
+            function onScroll() {
+                if (!ticking) {
+                    window.requestAnimationFrame(update);
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', () => { path.style.strokeDasharray = path.getTotalLength(); update(); });
+            update();
+        })();
+    </script>
+</body>
+
+</html>

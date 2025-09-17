@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단한 헤더 만들기</title>
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <style>
+
+    </style>
+
+
+<body>
+
+    <header>
+        <div class="container header-con">
+            <h1 class="logo">로고</h1>
+            <!-- 햄버거 버튼. 모바일에서만 보이게 -->
+            <button type="button" class="hamburger-btn">버튼</button>
+            <nav class="header-nav on">
+
+                <button class="close-btn">X</button>
+                <ul class="header-menu">
+                    <li>메뉴1</li>
+                    <li>메뉴2</li>
+                    <li>메뉴3</li>
+                    <li>메뉴4</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <main>
+        <section class="sec sec01">섹션1</section>
+        <section class="sec sec02">섹션2</section>
+        <section class="sec sec03">섹션3</section>
+        <section class="sec sec04">섹션4</section>
+    </main>
+
+
+    <footer>
+
+    </footer>
+
+    <script>
+
+        let btn = document.querySelector(".hamburger-btn");
+        let menu = document.querySelector(".header-nav");
+        console.log("dkssud");
+
+        // btn.addEventListener('click', function () {
+        //     menu.classList.toggle("on")
+        // });
+
+        let closeBtn = document.querySelector(".close-btn");
+
+        btn.addEventListener('click', function () {
+            console.log("dkssud");
+            menu.classList.add("on");
+        });
+        closeBtn.addEventListener('click', function () {
+            menu.classList.remove("on");
+        });
+
+    </script>
+
+
+</body>
+
+</html>
