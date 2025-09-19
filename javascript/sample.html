@@ -3,121 +3,228 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Scroll Draw Path</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Scroll Draw – Vertical Route with 5 Dots</title>
     <style>
+        :root {
+            --bg: #f7f9f5;
+            --line: #78c850;
+            /* 옐로우그린 라인 색 */
+            --dot: #111;
+            /* 점 색 */
+            --muted: #7b8b8c;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
         body {
             margin: 0;
-            font-family: system-ui, Arial
+            font-family: system-ui, Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: #111
         }
 
+        /* 상단 인트로 영역 (스크롤 시작 전) */
         header {
-            height: 100vh;
+            min-height: 100vh;
             display: grid;
             place-items: center;
-            background: #f7f9f5
+            padding: 3rem 1.5rem;
+            text-align: center;
         }
 
-        section {
-            min-height: 200vh;
+        header h1 {
+            margin: 0 0 .5rem;
+            font-size: clamp(28px, 5vw, 48px)
+        }
+
+        header p {
+            margin: 0;
+            color: var(--muted)
+        }
+
+        /* 트랙 섹션: sticky로 SVG를 고정하고 섹션 높이만큼 그려지게 함 */
+        section#track {
             position: relative;
-            background: #fff
+            min-height: 260vh;
+            /* 세로 스크롤 길이 (원하면 늘리세요) */
+            background: #fff;
         }
 
-        /* SVG를 화면 고정해 “길”처럼 보이게 */
-        .route-wrap {
+        .sticky-wrap {
             position: sticky;
             top: 0;
             height: 100vh;
             display: grid;
-            place-items: center
+            place-items: center;
         }
 
+        /* SVG 크기와 라인 스타일 */
         svg {
-            width: min(900px, 90vw);
+            width: min(720px, 92vw);
             height: auto;
             overflow: visible
         }
 
         .route {
             fill: none;
-            stroke: #6cc24a;
-            /* 옐로우그린 톤 */
-            stroke-width: 8;
+            stroke: var(--line);
+            stroke-width: 10;
             stroke-linecap: round;
             stroke-linejoin: round;
-            filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .06));
+            filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .05));
         }
 
-        /* 체크포인트 점 */
+        /* 점(5개)과 라벨 */
         .dot {
-            fill: #111
+            fill: var(--dot);
+            opacity: .2;
+            transition: opacity .35s ease, r .35s ease
+        }
+
+        .dot.show {
+            opacity: 1
         }
 
         .label {
-            font: 600 14px/1.2 system-ui, Arial;
-            fill: #333
+            font: 600 14px/1.2 system-ui, Arial, Helvetica, sans-serif;
+            fill: #333;
+            opacity: .2;
+            transition: opacity .35s ease, transform .35s ease;
+        }
+
+        .label.show {
+            opacity: 1;
+            transform: translateY(-2px)
+        }
+
+        /* 접근성 대비: 포커스 링 */
+        .focusable:focus {
+            outline: 3px solid #222;
+            outline-offset: 4px;
+            border-radius: 6px
+        }
+
+        /* 하단 마무리 섹션 */
+        footer {
+            padding: 4rem 1.5rem 6rem;
+            text-align: center;
+            background: #fff;
+        }
+
+        .hint {
+            color: var(--muted);
+            margin-top: .25rem
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>스크롤하면 길이 그려져요 👇</h1>
+        <div>
+            <h1>스크롤하면 ‘세로 길’이 그려집니다</h1>
+            <p>포인트 5개를 지나며 라벨이 차례대로 나타나요.</p>
+        </div>
     </header>
 
-    <section id="track">
-        <div class="route-wrap">
-            <svg viewBox="0 0 1000 600" id="map">
-                <!-- “길” 경로 -->
-                <path id="route" class="route" d="M50,550 C200,500 250,350 340,380
-             S520,460 600,300
-             S760,140 950,100" />
-                <!-- 체크포인트 예시 -->
-                <circle class="dot" cx="50" cy="550" r="5" />
-                <text class="label" x="65" y="550">Start</text>
-                <circle class="dot" cx="600" cy="300" r="5" />
-                <text class="label" x="615" y="295">Shop</text>
-                <circle class="dot" cx="950" cy="100" r="5" />
-                <text class="label" x="965" y="100">Goal</text>
+    <section id="track" aria-label="세로 라인 스크롤 트랙">
+        <div class="sticky-wrap">
+            <!-- 세로 라인: x는 고정(360), y만 아래로 내려가며 약간의 곡선을 줌 -->
+            <svg viewBox="0 0 720 1200" role="img" aria-label="세로 경로와 5개의 체크포인트">
+                <!-- 경로는 위에서 아래로 내려가는 S-커브 -->
+                <path id="route" class="route" d="M360,60
+             C360,160 300,240 360,340
+             S420,540 360,740
+             S300,940 360,1140" />
+
+                <!-- 점 5개 (y 위치만 다르게, x는 360을 기준으로 약간 좌우로 변주) -->
+                <circle class="dot" id="dot1" cx="360" cy="140" r="6" />
+                <text class="label" x="380" y="140">Start</text>
+
+                <circle class="dot" id="dot2" cx="330" cy="360" r="6" />
+                <text class="label" x="350" y="360">Checkpoint 2</text>
+
+                <circle class="dot" id="dot3" cx="390" cy="580" r="6" />
+                <text class="label" x="410" y="580">Checkpoint 3</text>
+
+                <circle class="dot" id="dot4" cx="330" cy="800" r="6" />
+                <text class="label" x="350" y="800">Checkpoint 4</text>
+
+                <circle class="dot" id="dot5" cx="360" cy="1020" r="6" />
+                <text class="label" x="380" y="1020">Goal</text>
             </svg>
         </div>
     </section>
+
+    <footer>
+        <h2 class="focusable" tabindex="0">끝까지 도달했습니다 🎉</h2>
+        <p class="hint">CSS/JS로 점 크기, 라벨, 색상을 마음대로 바꿔보세요.</p>
+    </footer>
 
     <script>
         (() => {
             const section = document.getElementById('track');
             const path = document.getElementById('route');
+            const dots = [...document.querySelectorAll('.dot')];
+            const labels = [...document.querySelectorAll('.label')];
 
-            const length = path.getTotalLength();
-            path.style.strokeDasharray = length;
-            path.style.strokeDashoffset = length; // 처음엔 0% 그려진 상태
+            // 경로 총 길이 구해서 dash 애니메이션 세팅
+            const totalLen = path.getTotalLength();
+            path.style.strokeDasharray = totalLen;
+            path.style.strokeDashoffset = totalLen;
+
+            // 각 점이 경로 상에서 “몇 % 지점”에 있는지 대략 설정(0~1)
+            // 아래 값은 y좌표 기준으로 감으로 맞춘 비율. 필요하면 미세조정하세요.
+            const checkpoints = [0.08, 0.30, 0.50, 0.70, 0.88];
 
             let ticking = false;
 
             function update() {
-                // 섹션 내부 스크롤 진행률(0~1)
                 const rect = section.getBoundingClientRect();
                 const vh = window.innerHeight;
-                const total = rect.height - vh;         // sticky 영역에서 실제 스크롤 거리
-                const passed = Math.min(Math.max(-rect.top, 0), total);
-                const progress = total > 0 ? (passed / total) : 0;
+                const scrollable = rect.height - vh; // sticky에서 실제 스크롤 가능한 거리
+                const passed = Math.min(Math.max(-rect.top, 0), scrollable);
+                const progress = scrollable > 0 ? (passed / scrollable) : 0; // 0~1
 
                 // 길 그리기: 진행률만큼 dashoffset 감소
-                path.style.strokeDashoffset = length * (1 - progress);
+                path.style.strokeDashoffset = totalLen * (1 - progress);
+
+                // 진행률에 따라 점/라벨 노출
+                checkpoints.forEach((p, i) => {
+                    const show = progress >= p;
+                    dots[i].classList.toggle('show', show);
+                    labels[i].classList.toggle('show', show);
+
+                    // 점 크기 살짝 애니메이션 (가시성)
+                    dots[i].setAttribute('r', show ? 7.5 : 6);
+                });
 
                 ticking = false;
             }
 
             function onScroll() {
                 if (!ticking) {
-                    window.requestAnimationFrame(update);
+                    requestAnimationFrame(update);
                     ticking = true;
                 }
             }
 
+            // 반응형: 리사이즈 시 길이 재계산
+            window.addEventListener('resize', () => {
+                const len = path.getTotalLength();
+                path.style.strokeDasharray = len;
+                // 현재 진행률 비율로 다시 오프셋 반영
+                const rect = section.getBoundingClientRect();
+                const vh = window.innerHeight;
+                const scrollable = rect.height - vh;
+                const passed = Math.min(Math.max(-rect.top, 0), scrollable);
+                const progress = scrollable > 0 ? (passed / scrollable) : 0;
+                path.style.strokeDashoffset = len * (1 - progress);
+            });
+
             window.addEventListener('scroll', onScroll, { passive: true });
-            window.addEventListener('resize', () => { path.style.strokeDasharray = path.getTotalLength(); update(); });
             update();
         })();
     </script>
