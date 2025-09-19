@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단한 헤더 만들기</title>
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <style>
+
+    </style>
+
+
+<body>
+
+    <header>
+        <div class="container header-con">
+            <h1 class="logo">로고</h1>
+            <!-- 햄버거 버튼. 모바일에서만 보이게 -->
+            <button type="button" class="hamburger-btn">버튼</button>
+            <nav class="header-nav on">
+
+                <button class="close-btn">X</button>
+                <ul class="header-menu">
+                    <li>
+                        <a href="#menu1">메뉴1</a>
+                    </li>
+                    <li>
+                        <a href="#menu2">메뉴2</a>
+                    </li>
+                    <li>
+                        <a href="#menu3">메뉴3</a>
+                    </li>
+                    <li>
+                        <a href="#menu4">메뉴4</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <main>
+        <section class="sec sec01" id="menu1">섹션1</section>
+        <section class="sec sec02" id="menu2">섹션2</section>
+        <section class="sec sec03" id="menu3">섹션3</section>
+        <section class="sec sec04" id="menu4">섹션4</section>
+    </main>
+
+
+    <footer>
+
+    </footer>
+
+    <script src="./asset/css/jquery-3.7.1.min.js"></script>
+    <script>
+
+        $(function () {
+            $(".hamburger-btn").click(function () {
+                $(".header-nav").toggleClass("on");
+            })
+        });
+
+        $(function () {
+            $(".hamburger-btn").click(function () {
+                $(".header-nav").addClass("on");
+            });
+            $(".close-btn").click(function () {
+                $(".header-nav").removeClass("on");
+            });
+        });
+
+        // let btn = document.querySelector(".hamburger-btn");
+        // let menu = document.querySelector(".header-nav");
+        // // btn.addEventListener('click', function () {
+        // //     menu.classList.toggle("on")
+        // // });
+
+        // let closeBtn = document.querySelector(".close-btn");
+
+        // btn.addEventListener('click', function () {
+        //     menu.classList.add("on");
+        // });
+        // closeBtn.addEventListener('click', function () {
+        //     menu.classList.remove("on");
+        // });
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
