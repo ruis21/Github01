@@ -26,6 +26,7 @@ $(function () {
 });
 
 
+
 $(function () {
     $(".fade-in-btn").on("click", function () {
         $(".box1").fadeIn();
@@ -55,6 +56,85 @@ $(function () {
     $(".fade-to-btn").on("click", function () {
         $(".box1").fadeTo(1000, 0);
     })
-
 });
+
+
+
+$(function () {
+    $(".slide-down").on("click", function () {
+        $(".list").slideDown(2000);
+        // $(".list").show(2000);
+    });
+
+    $(".slide-up").on("click", function () {
+        $(".list").slideUp();
+    });
+
+    $(".slide-toggle").on("click", function () {
+        // $(".list").toggle(function (1000);
+        $(".list").slideToggle(function () {
+            alert("메뉴 토글됨")
+        });
+    });
+});
+
+
+// $(function () {
+// $(".animate").on("click", function () {
+//     $(".animate-box").animate({
+//         left: "200px",
+//         top: "100px",
+//         margin: "100px",
+//         padding: "100px",
+//         background: "blue",
+//         "font-size": "30px",
+//         fontSize: "30px",
+//         width: "+=100px",
+//         height: "-=50px",
+//     }, 2000);
+// });
+
+// show, hide, toggle로 지정 가능
+// $(".animate").on("click", function () {
+//     $(".animate-box1").animate({
+//         width: "200px",
+//     });
+//     $(".animate-box1").animate({
+//         height: "200px",
+//     });
+//     $(".animate-box2").animate({
+//         width: "50px",
+//     });
+//     $(".animate-box2").animate({
+//         height: "50px",
+//     });
+// });
+
+
+// stop
+$(function () {
+    $(".animate-btn").on("click", function () {
+        $(".animate-box1").animate({
+            width: "200px"
+        }, 3000);
+        $(".animate-box1").animate({
+            height: "200px"
+        }, 2000);
+
+        $(".animate-box1").stop().toggle(1000);
+    });
+
+
+    $(".animate-box1").css("background-color", "yellow");
+    $(".animate-box1").hide();
+    $(".animate-box1").show();
+
+    // chaining
+    $(".animate-box1").css("background-color", "yellow").hide(1000).show(1000);
+
+    $(".stop-btn").on("click", function () {
+        $(".animate-box1").stop(false, true);
+    });
+});
+
 
